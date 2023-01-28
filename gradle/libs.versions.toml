@@ -1,0 +1,18 @@
+[versions]
+# kotlin
+kotlinVersion = "1.8.0"
+
+# campus
+parserSdkVersion = "0.1.0"
+
+[libraries]
+# campus
+parserSdk = { module = "me.campusapp.parsers:parser-sdk", version.ref = "parserSdkVersion" }
+parserTestsSdk = { module = "me.campusapp.parsers:parser-tests-sdk", version.ref = "parserSdkVersion" }
+
+# jsoup
+jsoup = { module = "org.jsoup:jsoup", version = "1.14.3" }
+
+[plugins]
+kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlinVersion" }
+kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlinVersion" }
