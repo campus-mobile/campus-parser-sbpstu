@@ -46,6 +46,9 @@ class SPBSTUGroupEntitiesCollector(
                 val url = "$baseUrl/faculty/$facultyCode/groups/$code"
                 Entity(
                     name = groupName,
+                    // каждый семестр видимо меняются имена групп, поэтому в приложении появляются группы с одинаковыми именами, но разными кодами
+                    // т.е. это действительно разные группы
+                    newName = groupName,
                     code = code,
                     scheduleUrl = url,
                     type = Entity.Type.Group,

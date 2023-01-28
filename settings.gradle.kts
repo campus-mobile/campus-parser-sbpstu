@@ -1,6 +1,6 @@
 import java.util.Properties
 
-rootProject.name = "campus-parser-sbpstu"
+rootProject.name = "campus-parser-spbstu"
 
 enableFeaturePreview("VERSION_CATALOGS")
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")

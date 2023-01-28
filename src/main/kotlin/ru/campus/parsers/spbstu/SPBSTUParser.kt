@@ -63,9 +63,7 @@ class SPBSTUParser @JvmOverloads constructor(
     override suspend fun parseInternal(): ParserResult {
         return coroutineScope {
 
-            val groupsPromise = async { groupsCollector.collectEntities() }
-
-            val groups: List<Entity> = groupsPromise.await()
+            val groups: List<Entity> = groupsCollector.collectEntities()
 
             val currentDate: LocalDate = dateProvider.getCurrentDateTime().date
 
@@ -81,8 +79,8 @@ class SPBSTUParser @JvmOverloads constructor(
 
             val successfulGroups: List<ProcessedEntity> = successfulGroupsPromise.await()
 
-            val teachers: List<Entity> = successfulGroups.flatMap { processedEntity ->
-                val savedSchedule = processedEntity.savedSchedule
+            val teachers: List<Entity> = successfulGroups.flatMap { it ->
+                val savedSchedule = it.savedSchedule
                 savedSchedule.schedule.flatMap { schedule ->
                     schedule.intervals.flatMap { interval ->
                         interval.lessons.flatMap { lesson ->
