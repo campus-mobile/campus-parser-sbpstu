@@ -1,15 +1,7 @@
-import java.util.Properties
-
 rootProject.name = "campus-parser-spbstu"
 
 enableFeaturePreview("VERSION_CATALOGS")
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
-
-val localProperties: Properties? = File("local.properties").takeIf { it.exists() }?.let { file ->
-    file.inputStream().use { stream ->
-        Properties().apply { load(stream) }
-    }
-}
 
 dependencyResolutionManagement {
     repositories {
@@ -17,10 +9,10 @@ dependencyResolutionManagement {
         google()
 
         maven {
-            url = uri("https://maven.pkg.github.com/campus-mobile/campus-parser-kotlin-sdk")
+            url = uri("https://maven.pkg.jetbrains.space/campus/p/public/maven")
             credentials {
-                username = localProperties?.get("gpr.user")?.toString() ?: System.getenv("USERNAME")
-                password = localProperties?.get("gpr.key")?.toString() ?: System.getenv("TOKEN")
+                username = "fe830210-7883-4b65-85b4-82cd4a53842e"
+                password = "ecd461681bc1eb56ca9daa99c04a29dd019b154d3e61648e03f34399ec1b4fac"
             }
         }
     }
