@@ -8,6 +8,7 @@ import org.gradle.api.tasks.testing.logging.TestLogEvent
 plugins {
     alias(libs.plugins.kotlin)
     alias(libs.plugins.kotlinSerialization)
+    `maven-publish`
 }
 
 group = "me.campusapp.parsers"
@@ -20,17 +21,38 @@ dependencies {
     testImplementation(libs.parserTestsSdk)
 }
 
-subprojects {
-    tasks.withType<AbstractTestTask> {
-        testLogging {
-            exceptionFormat = TestExceptionFormat.FULL
-            events = setOf(
-                TestLogEvent.SKIPPED,
-                TestLogEvent.PASSED,
-                TestLogEvent.FAILED
-            )
-            showStandardStreams = true
+tasks.withType<AbstractTestTask> {
+    testLogging {
+        exceptionFormat = TestExceptionFormat.FULL
+        events = setOf(
+            TestLogEvent.SKIPPED,
+            TestLogEvent.PASSED,
+            TestLogEvent.FAILED
+        )
+        showStandardStreams = true
+    }
+    outputs.upToDateWhen { false }
+}
+
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "SpacePackages"
+            url = uri("https://maven.pkg.jetbrains.space/campus/p/campus/maven")
+            credentials {
+                username = System.getenv("SPACE_USERNAME")
+                password = System.getenv("SPACE_PASSWORD")
+            }
         }
-        outputs.upToDateWhen { false }
+    }
+    publications {
+        register<MavenPublication>("space") {
+            from(components.getByName("java"))
+        }
     }
 }

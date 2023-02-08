@@ -8,27 +8,6 @@
 Для запуска на локальной машине требуется:
 
 1. Наличие [JDK 11](https://jdk.java.net) или выше
-2. Создать файл `local.properties`, содержащий конфигурацию для подключения к GitHub Packages
-
-### local.properties
-
-Содержимое файла:
-
-```properties
-gpr.user=USERNAME
-gpr.key=TOKEN
-```
-
-Вместо `USERNAME` нужно написать свой GitHub username (например alex009 у https://github.com/Alex009).  
-Вместо `TOKEN` нужно написать свой Personal access token с правами `read:packages`). Управление токенами происходит
-на [этой странице](https://github.com/settings/tokens). Нужен `classic` token, с правами `read:packages`.
-
-пример:
-
-```properties
-gpr.user=alex009
-gpr.key=ghp_0yxNpHnnP3H2KxUTJbbqzZNufXWk2C9U3NQz
-```
 
 ## Development
 
