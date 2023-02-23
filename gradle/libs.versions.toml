@@ -1,9 +1,9 @@
 [versions]
 # kotlin
-kotlinVersion = "1.8.0"
+kotlinVersion = "1.8.10"
 
 # campus
-parserSdkVersion = "0.3.1"
+parserSdkVersion = "0.4.1"
 
 [libraries]
 # campus
