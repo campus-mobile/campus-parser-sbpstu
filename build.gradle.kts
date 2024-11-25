@@ -42,17 +42,17 @@ java {
 publishing {
     repositories {
         maven {
-            name = "SpacePackages"
-            url = uri("https://maven.pkg.jetbrains.space/campus/p/campus/maven")
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/campus-mobile/campus-parser-spbstu")
             credentials {
-                username = System.getenv("SPACE_USERNAME")
-                password = System.getenv("SPACE_PASSWORD")
+                username = project.findProperty("gpr.user")?.toString() ?: System.getenv("GPR_USERNAME")
+                password = project.findProperty("gpr.key")?.toString() ?: System.getenv("GPR_TOKEN")
             }
         }
-    }
-    publications {
-        register<MavenPublication>("space") {
-            from(components.getByName("java"))
+        publications {
+            register<MavenPublication>("gpr") {
+                from(components.getByName("java"))
+            }
         }
     }
 }
