@@ -13,7 +13,7 @@ dependencyResolutionManagement {
             url = uri("https://maven.pkg.github.com/campus-mobile/campus-parser-kotlin-sdk")
             credentials {
                 username = "TOKEN"
-                password = "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"
+                password = providers.gradleProperty("github.token").orNull ?: System.getenv("GPR_TOKEN")
             }
         }
     }
